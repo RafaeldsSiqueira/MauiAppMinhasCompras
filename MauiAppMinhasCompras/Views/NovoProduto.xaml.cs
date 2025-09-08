@@ -1,6 +1,11 @@
+using System;
+using System.Threading.Tasks;
 using MauiAppMinhasCompras.Models;
+using MauiAppMinhasCompras.Helpers;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
-namespace MauiAppMinhasCompras.Views;
+namespace MauiAppMinhasCompras.Views
 
 public partial class NovoProduto : ContentPage
 {
