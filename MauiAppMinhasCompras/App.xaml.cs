@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Microsoft.Maui.Controls;
+using MauiAppMinhasCompras.Helpers;
 
 namespace MauiAppMinhasCompras
 {
