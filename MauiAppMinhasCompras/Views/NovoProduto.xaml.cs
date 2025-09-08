@@ -13,11 +13,30 @@ public partial class NovoProduto : ContentPage
     {
         try
         {
+            // Validação dos campos
+            if (string.IsNullOrWhiteSpace(txt_descricao.Text))
+            {
+                await DisplayAlert("Erro", "Por favor, preencha a descrição do produto.", "OK");
+                return;
+            }
+
+            if (!double.TryParse(txt_quantidade.Text, out double quantidade) || quantidade <= 0)
+            {
+                await DisplayAlert("Erro", "Por favor, insira uma quantidade válida maior que zero.", "OK");
+                return;
+            }
+
+            if (!double.TryParse(txt_preco.Text, out double preco) || preco <= 0)
+            {
+                await DisplayAlert("Erro", "Por favor, insira um preço válido maior que zero.", "OK");
+                return;
+            }
+
             Produto p = new Produto
             {
-                Descricao = txt_descricao.Text,
-                Quantidade = Convert.ToDouble(txt_quantidade.Text),
-                Preco = Convert.ToDouble(txt_preco.Text)
+                Descricao = txt_descricao.Text.Trim(),
+                Quantidade = quantidade,
+                Preco = preco
             };
 
             await App.DB.Insert(p);

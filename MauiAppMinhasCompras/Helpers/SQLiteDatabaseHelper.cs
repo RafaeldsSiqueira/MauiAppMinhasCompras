@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace MauiAppMinhasCompras.Helpers
 {
-    public class SQLiteDatabaseHelpe
+    public class SQLiteDatabaseHelper
     {
         readonly SQLiteAsyncConnection _conn;
 
-        public SQLiteDatabaseHelpe  (string path)
+        public SQLiteDatabaseHelper(string path)
         {
             _conn = new SQLiteAsyncConnection(path);
             _conn.CreateTableAsync<Produto>().Wait();

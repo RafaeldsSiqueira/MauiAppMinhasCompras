@@ -33,38 +33,3 @@ namespace MauiAppMinhasCompras
         }
     }
 }
-using System;
-using System.IO;
-using Microsoft.Maui.Controls;
-
-namespace MauiAppMinhasCompras
-{
-    public partial class App : Application
-    {
-        static SQLiteDatabaseHelpe _db;
-
-        public static SQLiteDatabaseHelpe Db
-        {
-            get
-            {
-                if (_db == null)
-                {
-                    string path = Path.Combine(
-                        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                        "banco_sqlite_compras.db3");
-
-                    _db = new SQLiteDatabaseHelpe(path);
-                }
-
-                return _db;
-            }
-        }
-
-        public App()
-        {
-            InitializeComponent();
-
-            MainPage = new NavigationPage(new Views.ListaProduto());
-        }
-    }
-}

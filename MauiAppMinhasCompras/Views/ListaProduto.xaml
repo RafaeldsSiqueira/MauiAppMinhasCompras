@@ -54,7 +54,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.ContextActions>
-                                <MenuItem Text="Remover" Clicked="MenuItem_Clicked" />
+                                <MenuItem Text="Remover" Clicked="MenuItem_Clicked" CommandParameter="{Binding .}" />
                             </ViewCell.ContextActions>
                             <Grid ColumnDefinitions="30, 100, 80, 50, 90">
                                 <Label Grid.Column="0" Text="{Binding Id}" Padding="5" />
