@@ -8,10 +8,10 @@ public partial class ListaProduto : ContentPage
     public ListaProduto()
     {
         InitializeComponent();
-        CarregarProdutos();
+        // CarregarProdutos será chamado no OnAppearing
     }
 
-    private async void CarregarProdutos()
+    private async Task CarregarProdutos()
     {
         try
         {
@@ -49,7 +49,7 @@ public partial class ListaProduto : ContentPage
         {
             if (string.IsNullOrWhiteSpace(e.NewTextValue))
             {
-                CarregarProdutos();
+                await CarregarProdutos();
             }
             else
             {
@@ -96,7 +96,7 @@ public partial class ListaProduto : ContentPage
                 {
                     await App.DB.Delete(produto.Id);
                     await DisplayAlert("Sucesso", "Produto removido com sucesso!", "OK");
-                    CarregarProdutos();
+                    await CarregarProdutos();
                 }
             }
         }
@@ -109,6 +109,6 @@ public partial class ListaProduto : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        CarregarProdutos();
+        await CarregarProdutos();
     }
 }
