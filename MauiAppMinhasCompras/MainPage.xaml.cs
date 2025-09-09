@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using MauiAppMinhasCompras.Models;
 
 namespace MauiAppMinhasCompras
 {
@@ -14,11 +15,11 @@ namespace MauiAppMinhasCompras
             // Lista inicial de produtos (mock)
             Produtos = new ObservableCollection<Produto>
             {
-                new Produto { Nome = "Arroz" },
-                new Produto { Nome = "Feijão" },
-                new Produto { Nome = "Macarrão" },
-                new Produto { Nome = "Café" },
-                new Produto { Nome = "Leite" }
+                new Produto { Descricao = "Arroz" },
+                new Produto { Descricao = "Feijão" },
+                new Produto { Descricao = "Macarrão" },
+                new Produto { Descricao = "Café" },
+                new Produto { Descricao = "Leite" }
             };
 
             // Inicialmente exibe todos
@@ -32,21 +33,12 @@ namespace MauiAppMinhasCompras
             var searchText = e.NewTextValue?.ToLower() ?? string.Empty;
 
             var filtered = Produtos
-                .Where(p => p.Nome.ToLower().Contains(searchText))
+                .Where(p => p.Descricao.ToLower().Contains(searchText))
                 .ToList();
 
             ProdutosFiltrados.Clear();
             foreach (var item in filtered)
                 ProdutosFiltrados.Add(item);
         }
-    }
-
-    public class Produto
-    {
-        public string Nome { get; set; }
-        public string Descricao { get; internal set; }
-        public object Id { get; internal set; }
-        public double Quantidade { get; internal set; }
-        public double Preco { get; internal set; }
     }
 }

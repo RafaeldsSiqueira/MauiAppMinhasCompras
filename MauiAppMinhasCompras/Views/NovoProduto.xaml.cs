@@ -6,8 +6,8 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui;
 
 namespace MauiAppMinhasCompras.Views
-
-public partial class NovoProduto : ContentPage
+{
+    public partial class NovoProduto : ContentPage
 {
     public NovoProduto()
     {
@@ -44,7 +44,7 @@ public partial class NovoProduto : ContentPage
                 Preco = preco
             };
 
-            await App.DB.Insert(p);
+            await App.Db.Insert(p);
             await DisplayAlert("Sucesso!", "Registro Inserido", "OK");
             await Navigation.PopAsync();
 
@@ -55,3 +55,4 @@ public partial class NovoProduto : ContentPage
         } // Fecha try-catch
     } // Fecha ToolbarItem_Clicked
 } // Fecha classe NovoProduto
+}

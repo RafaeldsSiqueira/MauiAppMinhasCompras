@@ -7,8 +7,8 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui;
 
 namespace MauiAppMinhasCompras.Views
-
-public partial class ListaProduto : ContentPage
+{
+    public partial class ListaProduto : ContentPage
 {
     public ListaProduto()
     {
@@ -20,7 +20,7 @@ public partial class ListaProduto : ContentPage
     {
         try
         {
-            var produtos = await App.DB.GetAll();
+            var produtos = await App.Db.GetAll();
             lst_produtos.ItemsSource = produtos;
         }
         catch (Exception ex)
@@ -38,7 +38,7 @@ public partial class ListaProduto : ContentPage
     {
         try
         {
-            var produtos = await App.DB.GetAll();
+            var produtos = await App.Db.GetAll();
             double total = produtos.Sum(p => p.Total);
             await DisplayAlert("Total das Compras", $"Valor total: {total:C}", "OK");
         }
@@ -58,7 +58,7 @@ public partial class ListaProduto : ContentPage
             }
             else
             {
-                var produtos = await App.DB.Search(e.NewTextValue);
+                var produtos = await App.Db.Search(e.NewTextValue);
                 lst_produtos.ItemsSource = produtos;
             }
         }
@@ -99,7 +99,7 @@ public partial class ListaProduto : ContentPage
                 
                 if (confirmar)
                 {
-                    await App.DB.Delete(produto.Id);
+                    await App.Db.Delete(produto.Id);
                     await DisplayAlert("Sucesso", "Produto removido com sucesso!", "OK");
                     await CarregarProdutos();
                 }
@@ -116,4 +116,5 @@ public partial class ListaProduto : ContentPage
         base.OnAppearing();
         await CarregarProdutos();
     }
+}
 }

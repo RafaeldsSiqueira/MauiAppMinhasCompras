@@ -6,8 +6,8 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui;
 
 namespace MauiAppMinhasCompras.Views
-
-public partial class EditarProduto : ContentPage
+{
+    public partial class EditarProduto : ContentPage
 {
     public EditarProduto()
     {
@@ -53,7 +53,7 @@ public partial class EditarProduto : ContentPage
                 Preco = preco
             };
 
-            await App.DB.Update(p);
+            await App.Db.Update(p);
             await DisplayAlert("Sucesso!", "Registro Atualizado", "OK");
             await Navigation.PopAsync();
         }
@@ -62,4 +62,5 @@ public partial class EditarProduto : ContentPage
             await DisplayAlert("Ops", ex.Message, "OK");
         }
     }
+}
 }
