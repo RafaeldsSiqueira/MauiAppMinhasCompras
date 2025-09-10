@@ -48,7 +48,7 @@ namespace MauiAppMinhasCompras.Helpers
         {
             return _conn.Table<Produto>().ToListAsync();
         }
-
+        
         // =========================
         // Search
         // =========================
