@@ -35,11 +35,10 @@ namespace MauiAppMinhasCompras.Helpers
         // =========================
         // Delete
         // =========================
-        // Comparação segura de Id com Convert.ToInt32 para evitar erro de operador
         public Task<int> Delete(int id)
         {
             return _conn.Table<Produto>()
-                        .DeleteAsync(i => Convert.ToInt32(i.Id) == id);
+                        .DeleteAsync(i => i.Id == id);
         }
 
         // =========================
